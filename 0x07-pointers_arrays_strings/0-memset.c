@@ -4,6 +4,7 @@
  *@s: pointer block of memory to fill
  *@b: value to set
  *@n: bytes of the memory
+ *
  *Return: dest
  */
 
