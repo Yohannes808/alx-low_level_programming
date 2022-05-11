@@ -1,311 +1,198 @@
-# Variables, if, else, while
+0x0C. C - More malloc, free
+===========================
 
-# Learning Objectives 
+-   By Julien Barbier
+-   Weight: 1
+-   Ongoing second chance project - started 09-23-2021, must end by 09-25-2021 (in about 16 hours) - you're done with 0% of tasks.
+-   QA review fully automated.
 
-* What are the arithmetic operators and how to use them
-* What are the logical operators (sometimes called boolean operators) and how to use them
-* What the the relational operators and how to use them
-* What values are considered TRUE and FALSE in C
-* What are the boolean operators and how to use them
-* How to use the `if`, `if ... else` statements
-* How to use comments
-* How to declare variables of types `char`, `int`, `unsigned int`
-* How to assign values to variables
-* How to print the values of variables of type `char`, `int`, `unsigned int` with `printf`
-* How to use the `while` loop
-* How to use variables with the `while` loop
-* How to print variables using `printf`
-* What is the `ASCII` character set
-* What are the purpose of the `gcc` flags `-m32` and `-m64`
+#### In a nutshell...
 
-# Tasks
+-   **Auto QA review:** 0.0/36 mandatory & 0.0/21 optional
+-   **Altogether:**  **0.0%**
+    -   Mandatory: 0.0%
+    -   Optional: 0.0%
+    -   Calculation:  0.0% + (0.0% * 0.0%)  == **0.0%**
 
-## Positive anything is better than negative nothing
+Concepts
+--------
 
-This program will assign a random number to the variable `n` each time it is executed. Complete the source code in order to print whether the number stored in the variable `n` is positive or negative.
+*For this project, students are expected to look at this concept:*
 
-* You can find the source code [here](https://github.com/holbertonschool/0x01.c/blob/master/0-positive_or_negative_c)
-* The variable `n` will store a different value every time you will run this program
-* The output of the program should be:
-    * The number, followed by
-        * if the number is greater than 0: `is positive`
-        * if the number is 0: `is zero`
-        * if the number is less than 0: `is negative`
-    * followed by a new line
+-   [Automatic and dynamic allocation, malloc and free](https://alx-intranet.hbtn.io/concepts/62)
 
-**Solution:** [0-positive_or_negative.c](https://github.com/monoprosito/holbertonschool-low_level_programming/blob/master/0x01-variables_if_else_while/0-positive_or_negative.c)
+Resources
+---------
 
-```
-$ amonkeyprogrammer@ubuntu:~/0x01$ gcc -Wall -pedantic -Werror -Wextra 0-positive_or_negative.c -o 0-positive_or_negative
-$ amonkeyprogrammer@ubuntu:~/0x01$ ./0-positive_or_negative 
--520693284 is negative
-$ amonkeyprogrammer@ubuntu:~/0x01$ ./0-positive_or_negative 
--973398895 is negative
-$ amonkeyprogrammer@ubuntu:~/0x01$ ./0-positive_or_negative 
--199220452 is negative
-$ amonkeyprogrammer@ubuntu:~/0x01$ ./0-positive_or_negative 
-561319348 is positive
-$ amonkeyprogrammer@ubuntu:~/0x01$ ./0-positive_or_negative 
-561319348 is positive
-$ amonkeyprogrammer@ubuntu:~/0x01$ ./0-positive_or_negative 
-266853958 is positive
-$ amonkeyprogrammer@ubuntu:~/0x01$ ./0-positive_or_negative 
--48147767 is negative
-$ amonkeyprogrammer@ubuntu:~/0x01$ ./0-positive_or_negative 
-0 is zero
-$ amonkeyprogrammer@ubuntu:~/0x01$ 
-```
+**Read or watch**:
 
-## The last digit
+-   [Do I cast the result of malloc?](https://alx-intranet.hbtn.io/rltoken/uKhvfzpF3v8Be10NCZlQtA "Do I cast the result of malloc?")
 
-This program will assign a random number to the variable `n` each time it is executed. Complete the source code in order to print the last digit of the number stored in the variable `n`.
+**man or help**:
 
-* You can find the source code [here](https://github.com/holbertonschool/0x01.c/blob/master/1-last_digit_c)
-* The variable `n` will store a different value every time you run this program
-* The output of the program should be:
-    * The string `Last digit of`, followed by
-    * `n`, followed by
-    * the string `is`, followed by
-        * if the last digit of `n` is greater than 5: the string `and is greater than 5`
-        * if the last digit of `n` is 0: the string `and is 0`
-        * if the last digit of `n` is less than 6 and not 0: the string `and is less than 6 and not 0`
-    * followed by a new line
+-   `exit (3)`
+-   `calloc`
+-   `realloc`
 
-**Solution:** [1-last_digit.c](https://github.com/monoprosito/holbertonschool-low_level_programming/blob/master/0x01-variables_if_else_while/1-last_digit.c)
+Learning Objectives
+-------------------
 
-```
-$ amonkeyprogrammer@ubuntu:~/0x01$ gcc -Wall -pedantic -Werror -Wextra 1-last_digit.c -o 1-last_digit
-$ amonkeyprogrammer@ubuntu:~/0x01$ ./1-last_digit 
-Last digit of 629438752 is 2 and is less than 6 and not 0
-$ amonkeyprogrammer@ubuntu:~/0x01$ ./1-last_digit 
-Last digit of -748255693 is -3 and is less than 6 and not 0
-$ amonkeyprogrammer@ubuntu:~/0x01$ ./1-last_digit 
-Last digit of -1052791662 is -2 and is less than 6 and not 0
-$ amonkeyprogrammer@ubuntu:~/0x01$ ./1-last_digit 
-Last digit of -284805734 is -4 and is less than 6 and not 0
-$ amonkeyprogrammer@ubuntu:~/0x01$ ./1-last_digit 
-Last digit of -284805734 is -4 and is less than 6 and not 0
-$ amonkeyprogrammer@ubuntu:~/0x01$ ./1-last_digit 
-Last digit of 491506926 is 6 and is greater than 5
-$ amonkeyprogrammer@ubuntu:~/0x01$ ./1-last_digit 
-Last digit of 954249937 is 7 and is greater than 5
-$ amonkeyprogrammer@ubuntu:~/0x01$ ./1-last_digit 
-Last digit of 652334952 is 2 and is less than 6 and not 0
-$ amonkeyprogrammer@ubuntu:~/0x01$ ./1-last_digit 
-Last digit of -729688197 is -7 and is less than 6 and not 0
-$ amonkeyprogrammer@ubuntu:~/0x01$ ./1-last_digit 
-Last digit of -729688197 is -7 and is less than 6 and not 0
-$ amonkeyprogrammer@ubuntu:~/0x01$ ./1-last_digit 
-Last digit of 45528266 is 6 and is greater than 5
-$ amonkeyprogrammer@ubuntu:~/0x01$ ./1-last_digit 
-Last digit of 45528266 is 6 and is greater than 5
-$ amonkeyprogrammer@ubuntu:~/0x01$ ./1-last_digit 
-Last digit of 809065140 is 0 and is 0
-$ amonkeyprogrammer@ubuntu:~/0x01$
-```
+At the end of this project, you are expected to be able to [explain to anyone](https://alx-intranet.hbtn.io/rltoken/UzyOEQw26ytlKDLQq7AGXw "explain to anyone"), **without the help of Google**:
 
-## I sometimes suffer from insomnia. And when I can't fall asleep, I play what I call the alphabet game
+### General
 
-Write a program that prints the alphabet in lowercase, followed by a new line.
+-   How to use the `exit` function
+-   What are the functions `calloc` and `realloc` from the standard library and how to use them
 
-* You can only use the `putchar` function (every other function (`printf`, `puts`, etc…) is forbidden)
-* All your code should be in the `main` function
-* You can only use `putchar` twice in your code
+Requirements
+------------
 
-**Solution:** [2-print_alphabet.c](https://github.com/monoprosito/holbertonschool-low_level_programming/blob/master/0x01-variables_if_else_while/2-print_alphabet.c)
+### General
+
+-   Allowed editors: `vi`, `vim`, `emacs`
+-   All your files will be compiled on Ubuntu 20.04 LTS using `gcc`, using the options `-Wall -Werror -Wextra -pedantic -std=gnu89`
+-   All your files should end with a new line
+-   A `README.md` file, at the root of the folder of the project is mandatory
+-   Your code should use the `Betty` style. It will be checked using [betty-style.pl](https://github.com/holbertonschool/Betty/blob/master/betty-style.pl "betty-style.pl") and [betty-doc.pl](https://github.com/holbertonschool/Betty/blob/master/betty-doc.pl "betty-doc.pl")
+-   You are not allowed to use global variables
+-   No more than 5 functions per file
+-   The only C standard library functions allowed are `malloc`, `free` and `exit`. Any use of functions like `printf`, `puts`, `calloc`, `realloc` etc... is forbidden
+-   You are allowed to use [_putchar](https://github.com/holbertonschool/_putchar.c/blob/master/_putchar.c "_putchar")
+-   You don't have to push `_putchar.c`, we will use our file. If you do it won't be taken into account
+-   In the following examples, the `main.c` files are shown as examples. You can use them to test your functions, but you don't have to push them to your repo (if you do we won't take them into account). We will use our own `main.c` files at compilation. Our `main.c` files might be different from the one shown in the examples
+-   The prototypes of all your functions and the prototype of the function `_putchar` should be included in your header file called `main.h`
+-   Don't forget to push your header file
+
+--
+
+### 4\. _realloc
+
+#advanced
+
+Score: 0.00% (Checks completed: 0.00%)
+
+Write a function that reallocates a memory block using `malloc` and `free`
+
+-   Prototype: `void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);`
+-   where `ptr` is a pointer to the memory previously allocated with a call to `malloc`: `malloc(old_size)`
+-   `old_size` is the size, in bytes, of the allocated space for `ptr`
+-   and `new_size` is the new size, in bytes of the new memory block
+-   The contents will be copied to the newly allocated space, in the range from the start of `ptr` up to the minimum of the old and new sizes
+-   If `new_size` > `old_size`, the "added" memory should not be initialized
+-   If `new_size` == `old_size` do not do anything and return `ptr`
+-   If `ptr` is `NULL`, then the call is equivalent to `malloc(new_size)`, for all values of `old_size` and `new_size`
+-   If `new_size` is equal to zero, and `ptr` is not `NULL`, then the call is equivalent to `free(ptr)`. Return `NULL`
+-   Don't forget to free `ptr` when it makes sense
+
+FYI: The standard library provides a different function: `realloc`. Run `man realloc` to learn more.
 
 ```
-$ amonkeyprogrammer@ubuntu:~/0x01$ gcc -Wall -pedantic -Werror -Wextra 2-print_alphabet.c -o 2-print_alphabet
-$ amonkeyprogrammer@ubuntu:~/0x01$ ./2-print_alphabet 
-abcdefghijklmnopqrstuvwxyz
-$ amonkeyprogrammer@ubuntu:~/0x01$
-```
+julien@ubuntu:~/0x0b. more malloc, free$ cat 100-main.c
+#include "main.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-## alphABET
+/**
+ * simple_print_buffer - prints buffer in hexa
+ * @buffer: the address of memory to print
+ * @size: the size of the memory to print
+ *
+ * Return: Nothing.
+ */
+void simple_print_buffer(char *buffer, unsigned int size)
+{
+    unsigned int i;
 
-Write a program that prints the alphabet in lowercase, and then in uppercase, followed by a new line.
+    i = 0;
+    while (i < size)
+    {
+        if (i % 10)
+        {
+            printf(" ");
+        }
+        if (!(i % 10) && i)
+        {
+            printf("\n");
+        }
+        printf("0x%02x", buffer[i]);
+        i++;
+    }
+    printf("\n");
+}
 
-* You can only use the `putchar` function (every other function (printf, puts, etc…) is forbidden)
-* All your code should be in the `main` function
-* You can only use `putchar` three times in your code
+/**
+ * main - check the code for
+ *
+ * Return: Always 0.
+ */
+int main(void)
+{
+    char *p;
+    int i;
 
-**Solution:** [3-print_alphabets.c](https://github.com/monoprosito/holbertonschool-low_level_programming/blob/master/0x01-variables_if_else_while/3-print_alphabets.c)
-
-```
-$ amonkeyprogrammer@ubuntu:~/0x01$ gcc -Wall -pedantic -Werror -Wextra 3-print_alphabets.c -o 3-print_alphabets
-$ amonkeyprogrammer@ubuntu:~/0x01$ ./3-print_alphabets | cat -e
-abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$
-$ amonkeyprogrammer@ubuntu:~/0x01$
-```
-
-## When I was having that alphabet soup, I never thought that it would pay off
-
-Write a program that prints the alphabet in lowercase, followed by a new line.
-
-* Print all the letters except `q` and `e`
-* You can only use the `putchar` function (every other function (`printf`, `puts`, etc…) is forbidden)
-* All your code should be in the `main` function
-* You can only use `putchar` twice in your code
-
-**Solution:** [4-print_alphabt.c](https://github.com/monoprosito/holbertonschool-low_level_programming/blob/master/0x01-variables_if_else_while/4-print_alphabt.c)
-
-```
-$ amonkeyprogrammer@ubuntu:~/0x01$ gcc -Wall -pedantic -Werror -Wextra 4-print_alphabt.c -o 4-print_alphabt
-$ amonkeyprogrammer@ubuntu:~/0x01$ ./4-print_alphabt 
-abcdfghijklmnoprstuvwxyz
-$ amonkeyprogrammer@ubuntu:~/0x01$ ./4-print_alphabt | grep [eq]
-$ amonkeyprogrammer@ubuntu:~/0x01$
-```
-
-## Numbers
-
-Write a program that prints all single digit numbers of base 10 starting from `0`, followed by a new line.
-
-* All your code should be in the `main` function
-
-**Solution:** [5-print_numbers.c](https://github.com/monoprosito/holbertonschool-low_level_programming/blob/master/0x01-variables_if_else_while/5-print_numbers.c)
-
-```
-$ amonkeyprogrammer@ubuntu:~/0x01$ gcc -Wall -pedantic -Werror -Wextra 5-print_numbers.c -o 5-print_numbers
-$ amonkeyprogrammer@ubuntu:~/0x01$ ./5-print_numbers 
-0123456789
-$ amonkeyprogrammer@ubuntu:~/0x01$
-```
-
-## Numberz
-
-Write a program that prints all single digit numbers of base 10 starting from `0`, followed by a new line.
-
-* You are not allowed to use any variable of type `char`
-* You can only use the `putchar` function (every other function (`printf`, `puts`, etc…) is forbidden)
-* You can only use `putchar` twice in your code
-* All your code should be in the `main` function
-
-**Solution:** [6-print_numberz.c](https://github.com/monoprosito/holbertonschool-low_level_programming/blob/master/0x01-variables_if_else_while/6-print_numberz.c)
-
-```
-$ amonkeyprogrammer@ubuntu:~/0x01$ gcc -Wall -pedantic -Werror -Wextra 6-print_numberz.c -o 6-print_numberz
-$ amonkeyprogrammer@ubuntu:~/0x01$ ./6-print_numberz 
-0123456789
-$ amonkeyprogrammer@ubuntu:~/0x01$ 
-```
-
-## Smile in the mirror
-
-Write a program that prints the lowercase alphabet in reverse, followed by a new line.
-
-* You can only use the `putchar` function (every other function (`printf`, `puts`, etc…) is forbidden)
-* All your code should be in the `main` function
-* You can only use `putchar` twice in your code
-
-**Solution:** [7-print_tebahpla.c](https://github.com/monoprosito/holbertonschool-low_level_programming/blob/master/0x01-variables_if_else_while/7-print_tebahpla.c)
+    p = malloc(sizeof(char) * 10);
+    p = _realloc(p, sizeof(char) * 10, sizeof(char) * 98);
+    i = 0;
+    while (i < 98)
+    {
+        p[i++] = 98;
+    }
+    simple_print_buffer(p, 98);
+    free(p);
+    return (0);
+}
+julien@ubuntu:~/0x0b. more malloc, free$ gcc -Wall -pedantic -Werror -Wextra -std=gnu89 100-main.c 100-realloc.c -o 100-realloc
+julien@ubuntu:~/0x0b. more malloc, free$ ./100-realloc
+0x62 0x62 0x62 0x62 0x62 0x62 0x62 0x62 0x62 0x62
+0x62 0x62 0x62 0x62 0x62 0x62 0x62 0x62 0x62 0x62
+0x62 0x62 0x62 0x62 0x62 0x62 0x62 0x62 0x62 0x62
+0x62 0x62 0x62 0x62 0x62 0x62 0x62 0x62 0x62 0x62
+0x62 0x62 0x62 0x62 0x62 0x62 0x62 0x62 0x62 0x62
+0x62 0x62 0x62 0x62 0x62 0x62 0x62 0x62 0x62 0x62
+0x62 0x62 0x62 0x62 0x62 0x62 0x62 0x62 0x62 0x62
+0x62 0x62 0x62 0x62 0x62 0x62 0x62 0x62 0x62 0x62
+0x62 0x62 0x62 0x62 0x62 0x62 0x62 0x62 0x62 0x62
+0x62 0x62 0x62 0x62 0x62 0x62 0x62 0x62
+julien@ubuntu:~/0x0b. more malloc, free$
 
 ```
-$ amonkeyprogrammer@ubuntu:~/0x01$ gcc -Wall -pedantic -Werror -Wextra 7-print_tebahpla.c -o 7-print_tebahpla
-$ amonkeyprogrammer@ubuntu:~/0x01$ ./7-print_tebahpla
-zyxwvutsrqponmlkjihgfedcba
-$ amonkeyprogrammer@ubuntu:~/0x01$
-```
 
-## Hexadecimal
+**Repo:**
 
-Write a program that prints all the numbers of base 16 in lowercase, followed by a new line.
+-   GitHub repository: `alx-low_level_programming`
+-   Directory: `0x0C-more_malloc_free`
+-   File: `100-realloc.c`
 
-* You can only use the `putchar` function (every other function (`printf`, `puts`, etc…) is forbidden)
-* All your code should be in the `main` function
-* You can only use `putchar` three times in your code
+### 5\. We must accept finite disappointment, but never lose infinite hope
 
-**Solution:** [8-print_base16.c](https://github.com/monoprosito/holbertonschool-low_level_programming/blob/master/0x01-variables_if_else_while/8-print_base16.c)
+#advanced
 
-```
-$ amonkeyprogrammer@ubuntu:~/0x01$ gcc -Wall -pedantic -Werror -Wextra 8-print_base16.c -o 8-print_base16
-$ amonkeyprogrammer@ubuntu:~/0x01$ ./8-print_base16
-0123456789abcdef
-$ amonkeyprogrammer@ubuntu:~/0x01$
-```
+Score: 0.00% (Checks completed: 0.00%)
 
-## Patience, persistence and perspiration make an unbeatable combination for success
+Write a program that multiplies two positive numbers.
 
-Write a program that prints all possible combinations of single-digit numbers.
+-   Usage: `mul num1 num2`
+-   `num1` and `num2` will be passed in base 10
+-   Print the result, followed by a new line
+-   If the number of arguments is incorrect, print `Error`, followed by a new line, and exit with a status of `98`
+-   `num1` and `num2` should only be composed of digits. If not, print `Error`, followed by a new line, and exit with a status of `98`
+-   You are allowed to use more than 5 functions in your file
 
-* Numbers must be separated by `,`, followed by a space
-* Numbers should be printed in ascending order
-* You can only use the `putchar` function (every other function (`printf`, `puts`, etc…) is forbidden)
-* All your code should be in the `main` function
-* You can only use `putchar` four times maximum in your code
-* You are not allowed to use any variable of type `char`
-
-**Solution:** [9-print_comb.c](https://github.com/monoprosito/holbertonschool-low_level_programming/blob/master/0x01-variables_if_else_while/9-print_comb.c)
+You can use `bc` (`man bc`) to check your results.
 
 ```
-$ amonkeyprogrammer@ubuntu:~/0x01$ gcc -Wall -pedantic -Werror -Wextra 9-print_comb.c -o 9-print_comb
-$ amonkeyprogrammer@ubuntu:~/0x01$ ./9-print_comb | cat -e
-0, 1, 2, 3, 4, 5, 6, 7, 8, 9$
-$ amonkeyprogrammer@ubuntu:~/0x01$
-```
-
-## 00..99
-
-Write a program that prints the numbers from 00 to 99.
-
-* Numbers must be separated by `,`, followed by a space
-* Numbers should be printed in ascending order, with two digits
-* You can only use the `putchar` function (every other function (`printf`, `puts`, etc…) is forbidden)
-* You can only use `putchar` five times maximum in your code
-* You are not allowed to use any variable of type `char`
-* All your code should be in the `main` function
-
-**Solution:** [10-print_comb2.c](https://github.com/monoprosito/holbertonschool-low_level_programming/blob/master/0x01-variables_if_else_while/10-print_comb2.c)
+julien@ubuntu:~/0x0b. more malloc, free$ gcc -Wall -pedantic -Werror -Wextra -std=gnu89 101-mul.c _putchar.c -o 101-mul
+julien@ubuntu:~/0x0b. more malloc, free$ ./101-mul 10 98
+980
+julien@ubuntu:~/0x0b. more malloc, free$ ./101-mul 235234693269436436223446526546334576437634765378653875874687649698659586695898579 28658034365084365083426083109679137608216408631430814308651084650816406134060831608310853086103769013709675067130586570832760732096730978014607369739567864508634086304807450973045703428580934825098342095832409850394285098342509834209583425345267413639235755891879970464524226159074760914989935413350556875770807019893069201247121855122836389417022552166316010013074258781583143870461182707893577849408672040555089482160343085482612348145322689883025225988799452329290281169927532160590651993511788518550547570284574715925006962738262888617840435389140329668772644708
+6741363923575589187997046452422615907476091498993541335055687577080701989306920124712185512283638941702255216631601001307425878158314387046118270789357784940867204055508948216034308548261234814532268988302522598879945232929028116992753216059081057377926651337612618248332113256902485974371969385156015068813868274000683912187818601667058605418678284322237297213673482412392922068159291496274311170208689056585352782844484721140846367741649962638649229509281867896067208474178402156294978940712959518351846413859141792380853313812015295333546716634344284086426775480775747808150030732119704867805688704303461042373101473485092019906795014369069932
+julien@ubuntu:~/0x0b. more malloc, free$
 
 ```
-$ amonkeyprogrammer@ubuntu:~/0x01$ gcc -Wall -pedantic -Werror -Wextra 10-print_comb2.c -o 10-print_comb2
-$ amonkeyprogrammer@ubuntu:~/0x01$ ./10-print_comb2 
-00, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99
-$ amonkeyprogrammer@ubuntu:~/0x01$ 
-```
 
-## Inventing is a combination of brains and materials. The more brains you use, the less material you need
+**Repo:**
 
-Write a program that prints all possible different combinations of two digits.
-
-* Numbers must be separated by `,`, followed by a space
-* The two digits must be different
-* `01` and `10` are considered the same combination of the two digits `0` and `1`
-* Print only the smallest combination of two digits
-* Numbers should be printed in ascending order, with two digits
-* You can only use the `putchar` function (every other function (`printf`, `puts`, etc…) is forbidden)
-* You can only use `putchar` five times maximum in your code
-* You are not allowed to use any variable of type `char`
-* All your code should be in the `main` function
-
-**Solution:** [100-print_comb3.c](https://github.com/monoprosito/holbertonschool-low_level_programming/blob/master/0x01-variables_if_else_while/100-print_comb3.c)
-
-```
-$ amonkeyprogrammer@ubuntu:~/0x01$ gcc -Wall -pedantic -Werror -Wextra 100-print_comb3.c -o 100-print_comb3
-$ amonkeyprogrammer@ubuntu:~/0x01$ ./100-print_comb3
-01, 02, 03, 04, 05, 06, 07, 08, 09, 12, 13, 14, 15, 16, 17, 18, 19, 23, 24, 25, 26, 27, 28, 29, 34, 35, 36, 37, 38, 39, 45, 46, 47, 48, 49, 56, 57, 58, 59, 67, 68, 69, 78, 79, 89
-$ amonkeyprogrammer@ubuntu:~/0x01$
-```
-
-## The success combination in business is: Do what you do better... and: do more of what you do...
-
-Write a program that prints all possible different combinations of three digits.
-
-* Numbers must be separated by `,`, followed by a space
-* The three digits must be different
-* `012`, `120`, `102`, `021`, `201`, `210` are considered the same combination of the three digits `0`, `1` and `2`
-* Print only the smallest combination of three digits
-* Numbers should be printed in ascending order, with three digits
-* You can only use the `putchar` function (every other function (`printf`, `puts`, etc…) is forbidden)
-* You can only use `putchar` six times maximum in your code
-* You are not allowed to use any variable of type `char`
-* All your code should be in the `main` function
-
-**Solution:** [101-print_comb4.c](https://github.com/monoprosito/holbertonschool-low_level_programming/blob/master/0x01-variables_if_else_while/101-print_comb4.c)
-
-```
-$ amonkeyprogrammer@ubuntu:~/0x01$ gcc -Wall -pedantic -Werror -Wextra 101-print_comb4.c -o 101-print_comb4
-$ amonkeyprogrammer@ubuntu:~/0x01$ ./101-print_comb4
-012, 013, 014, 015, 016, 017, 018, 019, 023, 024, 025, 026, 027, 028, 029, 034, 035, 036, 037, 038, 039, 045, 046, 047, 048, 049, 056, 057, 058, 059, 067, 068, 069, 078, 079, 089, 123, 124, 125, 126, 127, 128, 129, 134, 135, 136, 137, 138, 139, 145, 146, 147, 148, 149, 156, 157, 158, 159, 167, 168, 169, 178, 179, 189, 234, 235, 236, 237, 238, 239, 245, 246, 247, 248, 249, 256, 257, 258, 259, 267, 268, 269, 278, 279, 289, 345, 346, 347, 348, 349, 356, 357, 358, 359, 367, 368, 369, 378, 379, 389, 456, 457, 458, 459, 467, 468, 469, 478, 479, 489, 567, 568, 569, 578, 579, 589, 678, 679, 689, 789
-$ amonkeyprogrammer@ubuntu:~/0x01$
-```
+-   GitHub repository: `alx-low_level_programming`
+-   Directory: `0x0C-more_malloc_free`
+-   File: `101-mul.c`
